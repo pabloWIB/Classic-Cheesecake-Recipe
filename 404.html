@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Built by Pablo Nieto Pérez — wib.digital
+       Need changes or a new build? https://www.fiverr.com/pablonietop -->
+  <meta name="author" content="Pablo Nieto Pérez — wib.digital">
+  <link rel="author" href="https://www.fiverr.com/pablonietop">
+
+  <title>Page Not Found — Go Back to the Classic Cheesecake Recipe</title>
+  <meta name="description" content="That page does not exist on this site. There is only one recipe here: a creamy classic cheesecake on a buttery graham cracker crust, baked in a water bath.">
+
+  <meta name="robots" content="noindex">
+
+  <link rel="icon" href="assets/img/icons/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Playfair+Display:ital,wght@0,700;1,700&amp;display=swap">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+
+  <script>
+    // Applies the stored theme before first paint so the page never flashes.
+    (function () {
+      try {
+        var stored = localStorage.getItem("cheesecake:theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute(
+          "data-theme",
+          stored || (prefersDark ? "dark" : "light")
+        );
+      } catch (error) {
+        /* Storage blocked — the light theme in the markup stands. */
+      }
+    })();
+  </script>
+</head>
+
+<body>
+  <main class="error-page container">
+    <p class="error-page__code">404</p>
+    <h1 class="error-page__title">This page is not on the menu</h1>
+    <p class="error-page__text">There is only one recipe on this site, and it is a good one. Go back and bake it.</p>
+    <p class="error-page__action">
+      <a class="button" href="index.html">Back to the recipe</a>
+    </p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+npm-debug.log*
+
+# Node — only ever present if a local static server is installed here
+node_modules/
+
+# Environment
+.env
+.env.local
+
+# Deploy
+.vercel/

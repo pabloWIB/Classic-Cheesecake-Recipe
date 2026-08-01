@@ -1,77 +1,112 @@
-![image](https://github.com/user-attachments/assets/c24da149-b4e0-4bcc-8ca7-5f6b7f3cd5e8)
+# Classic-Cheesecake-Recipe
 
+Single recipe page with a tickable ingredient list, built so it survives being read one-handed in a kitchen.
 
-# 🍰 Classic Cheesecake Recipe Website
+[![Live demo](https://img.shields.io/badge/demo-cheesecakerecipe.wib.digital-2ea44f)](https://cheesecakerecipe.wib.digital)
+[![Hire me on Fiverr](https://img.shields.io/badge/Hire%20me%20on-Fiverr-1DBF73?style=for-the-badge&logo=fiverr&logoColor=white)](https://www.fiverr.com/pablonietop)
+![Dependencies](https://img.shields.io/badge/npm%20dependencies-0-brightgreen)
+![Build step](https://img.shields.io/badge/build%20step-none-lightgrey)
+![Page weight](https://img.shields.io/badge/first%20load-63%20KB-brightgreen)
 
-A beautiful, responsive recipe website featuring a classic cheesecake recipe with step-by-step instructions. Perfect for baking enthusiasts and anyone looking to create the ultimate creamy, smooth cheesecake!
+## Description
 
-## 🛠️ What's Inside
+Recipe sites bury the recipe. The thing a cook actually needs — what to buy, how long it takes, what to do next — sits below a personal essay and a stack of ads. This page carries one recipe and starts with the ingredients.
 
-This is a simple static website built with:
-- **HTML5** - Clean, semantic structure
-- **CSS3** - Responsive styling and beautiful typography
-- **Vanilla JavaScript** - Interactive features (if any)
-- No servers or databases needed!
+Ingredients are checkboxes, not bullets. Ticking one off as it goes in the bowl is the only state a cook needs while their hands are busy, and it is the one thing a printed list cannot do. Ten items, each independently tickable, and the list survives a reload — a phone screen locks itself halfway through a bake.
 
-## 📁 File Structure
+The timing block is stated up front as yield, prep time, cook time and total time, so the decision to start can be made before reading the method. On a wide screen it stays pinned while the instructions scroll past. The recipe itself is credited to Sally's Baking Addiction, linked in the page.
+
+## Features
+
+- Ten ingredients as individually tickable checkboxes, remembered across reloads via `localStorage`.
+- A reset button to clear the list for the next bake, disabled while nothing is ticked.
+- Yield, prep time, cook time and total time stated before the method, and pinned to the viewport on wide screens.
+- Light and dark themes. Follows the operating system until you choose, then remembers the choice.
+- Method split into seven numbered steps.
+- Fully keyboard operable, with a skip link, visible focus rings and 44 px touch targets.
+- Source recipe credited and linked.
+- No build step, no package manager and no runtime dependencies.
+
+## Tech stack
+
+| Layer | Technology | Role in project |
+|---|---|---|
+| Markup | HTML5 | `index.html` and `404.html` |
+| Styling | CSS3 custom properties, grid, flexbox | Three cascade-ordered stylesheets |
+| Scripting | Vanilla JavaScript (ES5 syntax, IIFE) | Theme toggle and checklist persistence |
+| Fonts | Montserrat, Playfair Display | Served by Google Fonts with `preconnect` |
+| Images | WebP with `srcset` | One photograph; every icon is inline SVG |
+
+## Prerequisites
+
+None. Open `index.html` in any browser.
+
+## Installation
+
+```bash
+git clone https://github.com/pabloWIB/Classic-Cheesecake-Recipe.git
+cd Classic-Cheesecake-Recipe
+```
+
+Open `index.html` directly, or serve the folder to exercise `404.html`:
+
+```bash
+npx serve .
+```
+
+## Project structure
 
 ```
-Classic-Cheesecake-Recipe/
-├── index.html          # Main recipe page
-├── style.css           # Styling and layout
-├── script.js           # Interactive features
-├── images/             # Recipe photos and icons
-└── README.md           # You're reading this!
+.
+├── index.html                        # The full recipe
+├── 404.html                          # Not-found page, links back to the recipe
+├── robots.txt
+├── sitemap.xml
+├── assets/
+│   ├── css/
+│   │   ├── base.css                  # Tokens, reset, base typography, print
+│   │   ├── layout.css                # Container, header, recipe grid, footer
+│   │   └── components.css            # Theme toggle, checklist, meta card, steps
+│   ├── js/
+│   │   └── main.js                   # Single entry point, no dependencies
+│   └── img/
+│       ├── content/
+│       │   ├── cheesecake-slice.webp      # 1920w hero
+│       │   └── cheesecake-slice-960.webp  # 960w hero for narrow screens
+│       └── icons/
+│           └── favicon.svg
+└── docs/
+    ├── auditoria.md                  # State of the project before the rewrite
+    └── cambios.md                    # What changed, by phase
 ```
 
-## 🚀 How to Get Started
+Stylesheets load in cascade order: `base` → `layout` → `components`. The icons are not files — they are inline SVG in the markup, so they inherit the current theme colour.
 
-1. **Download the project**
-   ```bash
-   git clone https://github.com/pabloWIB/Classic-Cheesecake-Recipe.git
-   ```
+## Usage
 
-2. **Open the folder** and double-click `index.html`
+Ticking an ingredient stores its id under the `cheesecake:checked` key in `localStorage`; the theme choice is stored under `cheesecake:theme`. Both reads and writes are wrapped in `try/catch`, so the page still works where storage is blocked — it just stops remembering.
 
-3. **Start baking!** 🎉 Your recipe website is ready to use
+`main.js` is a single classic script loaded with `defer`, not an ES module. Browsers block module imports over `file://` on CORS grounds, and this page has to work when `index.html` is opened straight off the filesystem.
 
-That's it! No installation, no setup, no servers required.
+## Credits
 
-## ✨ Easy Customization
+The recipe is from [Sally's Baking Addiction](https://sallysbakingaddiction.com), linked in the page. This repository is the presentation layer, not the recipe's source.
 
-Want to make it your own? Here's how:
+## Deployment
 
-- **Change the recipe**: Edit the ingredients and instructions in `index.html`
-- **Add your photos**: Replace images in the `images/` folder
-- **Customize colors**: Modify the CSS variables in `style.css`
-- **Add more recipes**: Create new HTML pages following the same structure
+Deployed on Vercel at [cheesecakerecipe.wib.digital](https://cheesecakerecipe.wib.digital). Static: upload the repository root as-is, no build command and no output directory.
 
-## 🌐 Free Hosting Options
+## Author
 
-Share your recipe website with the world:
+**Pablo Nieto Pérez** — [wib.digital](https://wib.digital)
+GitHub: [@pabloWIB](https://github.com/pabloWIB)
 
-- **GitHub Pages**: Push to GitHub, enable Pages in settings
-- **Netlify**: Drag and drop your folder at netlify.com
-- **Vercel**: Import your GitHub repo at vercel.com
-- **Surge.sh**: Simple command-line deployment
+## Hire me
 
-## 💡 Beginner Tips
+I build **custom internal tools, CRMs and dashboards** for small teams, and
+**conversion-focused websites** for businesses.
 
-**New to web development?** Here are some great resources:
-- [MDN Web Docs](https://developer.mozilla.org/) - Learn HTML, CSS, and JavaScript
-- [freeCodeCamp](https://www.freecodecamp.org/) - Free coding bootcamp
-- [CSS-Tricks](https://css-tricks.com/) - Amazing CSS tutorials
-
-**Pro Tips:**
-- Use browser developer tools (F12) to experiment with styles
-- Start small - modify colors and text first
-- Save often and refresh your browser to see changes
-- Don't be afraid to break things - you can always start over!
-
-## 🤝 Contributing
-
-Found a bug or have a suggestion? Feel free to open an issue or submit a pull request!
-
----
-
-**Happy Baking! 🍰** Made with ❤️ for fellow baking enthusiasts
+- [Custom internal tool, CRM or dashboard](https://www.fiverr.com/pablonietop/build-a-custom-internal-app-for-your-business) — from $45
+- [Conversion-focused website](https://www.fiverr.com/pablonietop/convert-your-landing-page-design-to-code) — from $80
+- [All my services on Fiverr](https://www.fiverr.com/pablonietop)
+- [wib.digital](https://wib.digital)
