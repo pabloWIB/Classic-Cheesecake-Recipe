@@ -2,7 +2,7 @@
 
 Single recipe page with a tickable ingredient list, built so it survives being read one-handed in a kitchen.
 
-[![Live demo](https://img.shields.io/badge/demo-cheesecakerecipe.wib.digital-2ea44f)](https://cheesecakerecipe.wib.digital)
+[![Live demo](https://img.shields.io/badge/demo-pablowib.github.io/Classic-Cheesecake-Recipe-2ea44f)](https://pablowib.github.io/Classic-Cheesecake-Recipe)
 [![Hire me on Fiverr](https://img.shields.io/badge/Hire%20me%20on-Fiverr-1DBF73?style=for-the-badge&logo=fiverr&logoColor=white)](https://www.fiverr.com/pablonietop)
 ![Dependencies](https://img.shields.io/badge/npm%20dependencies-0-brightgreen)
 ![Build step](https://img.shields.io/badge/build%20step-none-lightgrey)
@@ -94,7 +94,7 @@ The recipe is from [Sally's Baking Addiction](https://sallysbakingaddiction.com)
 
 ## Deployment
 
-Deployed on Vercel at [cheesecakerecipe.wib.digital](https://cheesecakerecipe.wib.digital). Static: upload the repository root as-is, no build command and no output directory.
+Deployed on GitHub Pages at [pablowib.github.io/Classic-Cheesecake-Recipe](https://pablowib.github.io/Classic-Cheesecake-Recipe). Static: upload the repository root as-is, no build command and no output directory.
 
 ## Author
 

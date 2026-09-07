@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cheesecakerecipe.wib.digital/sitemap.xml
+Sitemap: https://pablowib.github.io/Classic-Cheesecake-Recipe/sitemap.xml
